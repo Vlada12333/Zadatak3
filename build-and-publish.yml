@@ -47,7 +47,7 @@ jobs:
           # build on feature branches, push only on main branch
           push: ${{  github.ref == 'refs/heads/main' }}
           
-      - name: tagging 
+      - name: igranje
 	run: docker tag vladimir:v1 vladimir1234/mr123:v1
 
   
