@@ -49,7 +49,7 @@ jobs:
             oskardudycz/eventsourcing.nodejs.simple:latest 
           #  ghcr.io/oskardudycz/eventsourcing.nodejs/simple:latest
           # build on feature branches, push only on main branch
-          push: ${{  secrets.DOCKER_HUB_USERNAME }}
+          push: ${{  github.ref == 'refs/heads/main' }}
       
   
       - name: Image digest
