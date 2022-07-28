@@ -50,6 +50,6 @@ jobs:
           #  ghcr.io/oskardudycz/eventsourcing.nodejs/simple:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
-
+                ${{secrets.DOCKER_HUB_USERNAME}}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
