@@ -33,12 +33,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Login to Github Packages
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+    #  - name: Login to Github Packages
+     # with:
+       #   registry: ghcr.io
+       #   username: ${{ github.actor }}
+       #   password: ${{ secrets.GHCR_PAT }}
       
       - name: Build image and push to Docker Hub and GitHub Container Registry
         uses: docker/build-push-action@v2
@@ -48,7 +47,7 @@ jobs:
           # Note: tags has to be all lower-case
           tags: |
             oskardudycz/eventsourcing.nodejs.simple:latest 
-            ghcr.io/oskardudycz/eventsourcing.nodejs/simple:latest
+          #  ghcr.io/oskardudycz/eventsourcing.nodejs/simple:latest
           # build on feature branches, push only on main branch
           push: ${{ github.ref == 'refs/heads/main' }}
 
