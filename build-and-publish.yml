@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           # relative path to the place where source code with Dockerfile is located
-          run: docker image build -t vladimir:v1
+          run: docker image build -t vladimir:latest
           # Note: tags has to be all lower-case
           tags: |
             oskardudycz/eventsourcing.nodejs.simple:latest 
@@ -53,10 +53,10 @@ jobs:
           push: ${{  github.ref == 'refs/heads/main' }}
           
       - name: tagging 
-          run: docker tag vladimir:v1 ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
+          run: docker tag vladimir:latest ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
           
       - name: pushing    
-          run: run: docker push vladimir1234/mr123:v1
+          run: run: docker push vladimir1234/mr123:latest
 
   
       - name: Image digest
