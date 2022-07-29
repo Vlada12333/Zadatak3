@@ -1,4 +1,4 @@
 
 FROM nginx:alpine
 COPY static /usr/share/nginx/html
-LABEL maintainer = "vlada11"
+LABEL maintainer = "vlada1"
