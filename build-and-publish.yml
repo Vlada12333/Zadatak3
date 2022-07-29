@@ -3,9 +3,8 @@ name: Build and Publish
 on:
   # run it on push to the default repository branch
   push:
-   branches: [ "NewBranch" ]
-  
-  
+
+
   # run it during pull request
  
 
@@ -35,30 +34,20 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-    #  - name: Login to Github Packages
-     #  with:
-       #   registry: ghcr.io
-         # username: ${{ github.actor }}
-         # password: ${{ secrets.GHCR_PAT }}
-      
-      - name: Build image and push to Docker Hub and GitHub Container Registry
-        uses: docker/build-push-action@v2
+      - name: Login to Github Packages
         with:
-          # relative path to the place where source code with Dockerfile is located
-          run: docker image build -t vladimir:latest
-          # Note: tags has to be all lower-case
-          tags: |
-            oskardudycz/eventsourcing.nodejs.simple:latest 
-          #  ghcr.io/oskardudycz/eventsourcing.nodejs/simple:latest
-          # build on feature branches, push only on main branch
-          push: ${{  github.ref == 'refs/heads/main' }}
-          
-      - name: tagging 
-        run: docker tag vladimir:latest ${{ secrets.DOCKER_HUB_USERNAME }}/mr123:latest
-          
-      - name: pushing    
-        run: docker push vladimir1234/mr123:latest
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_PAT }}
 
-  
+      - name: Build image and push to Docker Hub and GitHub Container Registry
+        run: docker image build -t vladimir:v1
+
+      - name: Tagging 
+        run: docker tag vladimir:v1 ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
+
+      - name: pomoziboze
+        run: docker push vladimir1234/mr123:v1
+
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
