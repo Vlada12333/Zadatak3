@@ -53,8 +53,8 @@ jobs:
           push: ${{  github.ref == 'refs/heads/main' }}
           
       - name: tagging 
-	        run: docker tag vladimir:v1 ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
-		run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
+          run: docker tag vladimir:v1 ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
+          run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
 
   
       - name: Image digest
