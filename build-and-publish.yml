@@ -51,9 +51,7 @@ jobs:
           #  ghcr.io/oskardudycz/eventsourcing.nodejs/simple:latest
           # build on feature branches, push only on main branch
           push: ${{  github.ref == 'refs/heads/main' }}
-          
-      - name: tagging 
-	 run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mr123:v1
+	  run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mr123:v1
 
   
       - name: Image digest
