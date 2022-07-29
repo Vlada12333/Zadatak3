@@ -34,11 +34,11 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Login to Github Packages
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+    #  - name: Login to Github Packages
+     #  with:
+       #   registry: ghcr.io
+         # username: ${{ github.actor }}
+         # password: ${{ secrets.GHCR_PAT }}
       
       - name: Build image and push to Docker Hub and GitHub Container Registry
         uses: docker/build-push-action@v2
@@ -56,7 +56,7 @@ jobs:
           run: docker tag vladimir:v1 ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
           
       - name: pushing    
-          run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mr123
+          run: run: docker push vladimir1234/mr123:v1
 
   
       - name: Image digest
