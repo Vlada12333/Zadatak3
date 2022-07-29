@@ -3,7 +3,7 @@ name: Build and Publish
 on:
   # run it on push to the default repository branch
   push:
-     branches: [ "NewBranch" ]
+   branches: [ "NewBranch" ]
   
   # run it during pull request
  
@@ -51,7 +51,9 @@ jobs:
           #  ghcr.io/oskardudycz/eventsourcing.nodejs/simple:latest
           # build on feature branches, push only on main branch
           push: ${{  github.ref == 'refs/heads/main' }}
-	  run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/mr123:v1
+          
+      - name: tagging 
+	        run: docker push	vladimir:v1 ${{ secrets.DOCKER_HUB_USERNAME }}/mr123:v1
 
   
       - name: Image digest
